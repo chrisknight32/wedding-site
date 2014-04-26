@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chris and Hannah's Wedding Site</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "home/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "home/css/wedding-styles.css" %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body data-spy="scroll" data-target=".subnav" data-offset="80">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Chris & Hannah</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#ourstory">Our Story</a></li>
+            <li><a href="#ourwedding">Our Wedding</a></li>
+            <li><a href="#accomodations">Accommodations</a></li>
+            <li><a href="#registries">Registries</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <section id="ourstory">
+    <p>We met during our first year of college at UCLA. By chance, we had enrolled in two of the same courses--a history class and a music class. Luckily, enrolling in those general education courses paid off, since we met each other! We have been a couple since February of 2008. In 2011, we graduated from college and moved to San Diego. We currently live in the Mira Mesa neighborhood with our awesome cat, Ember.</p>
+    <p>Chris grew up in the Sacramento area with a huge family, including five brothers! At UCLA, Chris studied computer science. He now works at Qualcomm as a senior engineer, writing software that helps all our cell phones function (thanks Chris!). Chris is also working on his master's degree in computer science at Stanford. He loves drinking and brewing beer, eating Indian food, and playing soccer.</p>
+    <p>Hannah grew up in southern California with her mom and a huge variety of pets. At UCLA, she studied molecular, cell, and developmental biology. She is currently working on her PhD at UCSD, studying cardiac development. Hannah loves hiking and camping, eating chocolate, and riding her bike.</p>
+    <p>We got engaged on December 21st, 2013 in Big Sur, CA. It was our first night camping in Big Sur, and it was quite a bit colder than we anticipated in our beach campsite. We climbed into our tent right after dinner so that we could stay warm in our sleeping bags. Chris had intended to propose the next day, but he was so excited that he proposed right there in the tent! Of course, Hannah said yes, and then we spent a few romantic days enjoying Big Sur before returning to reality and
+    spreading the exciting news.</p>
+    </section>
+    <div class="container">
+    </div><!-- /.container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "home/js/bootstrap.min.js" %}"></script>
+  </body>
+</html>
