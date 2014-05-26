@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="{% static "home/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "home/css/lavish-bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "home/css/wedding-styles.css" %}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -35,11 +36,13 @@
             <li><a href="#ourstory">Our Story</a></li>
             <li><a href="#wedding">Wedding</a></li>
             <li><a href="#accomodations">Accommodations</a></li>
-            <li><a href="#registries">Registries</a></li>
             <li><a href="#rsvp">RSVP</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
+    </div>
+    <div class="container">
+        <img class="img-responsive" src="{% static "home/img/top-banner.jpg" %}" />
     </div>
     <section id="ourstory">
         <div class="container">
@@ -65,23 +68,55 @@
                 <p>We got engaged on December 21st, 2013 in Big Sur, CA. It was our first night camping in Big Sur, and it was quite a bit colder than we anticipated in our beach campsite. We climbed into our tent right after dinner so that we could stay warm in our sleeping bags. Chris had intended to propose the next day, but he was so excited that he proposed right there in the tent! Of course, Hannah said yes, and then we spent a few romantic days enjoying Big Sur before returning to reality and spreading the exciting news.</p>
                 </div>
             </div>
+            <!--
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8" style="border-style:solid; border-width:3px; height:300px; background-image:url('{% static "home/img/beach.jpg" %}'); background-size: 100% auto;"></div>
+                <div class="col-md-2"></div>
+            </div>
+            -->
         </div><!-- /.container -->
+        <div class="container">
+            <br />
+            <img class="img-responsive" src="{% static "home/img/beach.jpg" %}" />
+        </div>
     </section>
     <section id="wedding">
         <div class="container">
             <div class="row">
                 <h2 class="page-header">Wedding</h2>
-
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <p>We will be getting marred on Saturday, December 6th at the Mission Beach Women's Club in San Diego, CA. Our ceremony will begin at 3:30pm, with the reception immediately following the ceremony at the same location.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center">
                 <h3>When</h3>
-                <p>Saturday, December 6, 2014</p>
-                <p>3:30 - Ceremony</p>
-                <p>4:00 - Reception</p>
+                <p>Saturday, December 6, 2014<br />
+                3:30 - Ceremony<br />
+                4:00 - Reception<br />
+                </p>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4 text-center">
                 <h3>Where</h3>
-                <p>Mission Beach Women's Club</p>
+                <p>
+                Mission Beach Women's Club<br />
+                (858) 488-2628<br />
+                840 Santa Clara Place<br />
+                San Diego, CA 92109<br />
+                <a target="_blank" href="https://maps.google.com/maps?client=safari&oe=UTF-8&ie=UTF8&q=Mission+Beach+Women%27s+Club&fb=1&gl=us&hq=mission+beach+women%27s+club&cid=16512818404190027350&t=h&z=16&vpsrc=0&iwloc=A">Map</a> - 
+                <a onclick="$('#directions-details').toggle();">Directions</a>
+                </p>
+                <p id="directions-details" class="text-left" style="display:none">
+                We recommend you approach from the southern side of Mission Bay to avoid traffic. From the 5, merge onto the 8 west and take the exit for West Mission Bay Drive. Merge onto West Mission Bay Drive, and then turn right onto Mission Blvd. Turn right onto Santa Clara Place. You will see the Mission Beach Women's Club on the left side of the street, adjacent to Mission Bay. Continue straight to park in one of the lots at the Santa Clara Point Recreation Center.
+                </p>
+                </div>
+
+                <div class="col-md-4 text-center">
+                <h3>Registries</h3>
+                <a target="_blank" href="http://www.bedbathandbeyond.com/store/giftregistry/view_registry_guest.jsp?pwsToken=&eventType=Wedding&registryId=541202975&pwsurl=">Bed Bath & Beyond</a><br />
+                <a target="_blank" href="http://www.amazon.com/gp/registry/registry.html?ie=UTF8&id=12N9UAGFATKFI&type=wedding">Amazon</a>
                 </div>
             </div>
         </div><!-- /.container -->
@@ -90,36 +125,45 @@
         <div class="container">
             <div class="row">
                 <h2 class="page-header">Accomodations</h2>
-
-                <div class="col-md-6">
-                <h3>When</h3>
-                <p>Saturday, December 6, 2014</p>
-                <p>3:30 - Ceremony</p>
-                <p>4:00 - Reception</p>
+                <div class="col-md-12">
+                    <p>There are lots of hotel options in San Diego, and it will be an easy drive to our wedding from any spot in San Diego. Our recommended hotel is the Holiday Inn Express, where we have arranged a group rate. The Holiday Inn Express is about 3.5 miles from the Mission Beach Women's Club.</p>
+                    <p>If you'd prefer to walk to our wedding (and be able to walk home), there are two large hotels within walking distance: the Catamaran Resort is only 0.5 miles away, and the Bahia Hotel is one mile away.</p>
                 </div>
 
-                <div class="col-md-6">
-                <h3>Where</h3>
-                <p>Mission Beach Women's Club</p>
-                </div>
-            </div>
-        </div><!-- /.container -->
-    </section>
-    <section id="registries">
-        <div class="container">
-            <div class="row">
-                <h2 class="page-header">Registries</h2>
-
-                <div class="col-md-6">
-                <h3>When</h3>
-                <p>Saturday, December 6, 2014</p>
-                <p>3:30 - Ceremony</p>
-                <p>4:00 - Reception</p>
+                <div class="col-md-4">
+                <h3 class="text-center">Holiday Inn Express</h3>
+                <p class="text-center">(858) 274-7888<br />
+                4540 Mission Bay Drive<br />
+                San Diego, CA 92109<br />
+                <a target="_blank" href="http://www.ihg.com/holidayinnexpress/hotels/us/en/san-diego/sanmb/hoteldetail?qAdlt=1&qBrs=6c.hi.ex.rs.ic.cp.in.sb.cw.cv&qChld=0&qFRA=1&qGRM=0&qGrpCd=AKW&qIta=99801505&qPSt=0&qRRSrt=rt&qRms=1&qRpn=1&qRpp=10&qSHp=1&qSmP=3&qSrt=sBR&qWch=0&srb_u=1&icdv=99801505">Website</a> -
+                <a target="_blank" href="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=4540+Mission+Bay+Dr,+San+Diego,+CA&aq=0&oq=4540+Mission+B&sll=32.824552,-117.108978&sspn=0.896669,1.84433&vpsrc=0&t=h&ie=UTF8&hq=&hnear=4540+Mission+Bay+Dr,+San+Diego,+California+92109&z=17&iwloc=A">Map</a> - 
+                <a onclick="$('#holiday-details').toggle();">Details</a>
+                </p>
+                <p id="holiday-details" style="display:none">We've arranged a group rate at the Holiday Inn Express which is valid if you book before November 15th, 2014. You can call and make a reservation as part of the "Al-Sodani and Knight wedding group" or book online using the group code "AKW."</p>
                 </div>
 
-                <div class="col-md-6">
-                <h3>Where</h3>
-                <p>Mission Beach Women's Club</p>
+                <div class="col-md-4">
+                <h3 class="text-center">Catamaran Resort</h3>
+                <p class="text-center">(858) 488-1081<br />
+                3999 Mission Blvd<br />
+                San Diego, CA 92109<br />
+                <a target="_blank" href="http://www.catamaranresort.com/">Website</a> - 
+                    <a target="_blank" href="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=3999+Mission+Blvd,+San+Diego,+CA&aq=0&oq=3999+miss&sll=32.824552,-117.108978&sspn=0.868973,1.84433&vpsrc=0&t=h&ie=UTF8&hq=&hnear=3999+Mission+Blvd,+San+Diego,+California+92109&z=17&iwloc=A">Map</a> - 
+                <a onclick="$('#catamaran-details').toggle();">Details</a>
+                </p>
+                <p id="catamaran-details" style="display:none">The Catamaran resort is a more expensive option within walking distance. There is a shuttle to and from the San Diego Airport, so you can avoid driving altogether.</p>
+                </div>
+
+                <div class="col-md-4">
+                <h3 class="text-center">Bahia Hotel</h3>
+                <p class="text-center">(800) 576-4299<br />
+                998 West Mission Bay Drive<br />
+                San Diego, CA 92109<br />
+                <a target="_blank" href="http://www.bahiahotel.com/">Website</a> - 
+                <a target="_blank" href="https://maps.google.com/maps?client=safari&q=998+west+mission+bay+drive&ie=UTF8&hq=&hnear=998+W+Mission+Bay+Dr,+San+Diego,+California+92109&t=h&z=16&vpsrc=0&iwloc=A">Map</a> - 
+                <a onclick="$('#bahia-details').toggle();">Details</a>
+                </p>
+                <p id="bahia-details" style="display:none">The Bahia resort is a nicer option about 1 mile away. There is also a shuttle to and from the San Diego Airport, so you can avoid driving altogether.</p>
                 </div>
             </div>
         </div><!-- /.container -->
@@ -129,20 +173,19 @@
             <div class="row">
                 <h2 class="page-header">RSVP</h2>
 
-                <div class="col-md-6">
-                <h3>When</h3>
-                <p>Saturday, December 6, 2014</p>
-                <p>3:30 - Ceremony</p>
-                <p>4:00 - Reception</p>
-                </div>
-
-                <div class="col-md-6">
-                <h3>Where</h3>
-                <p>Mission Beach Women's Club</p>
+                <div class="col-md-12">
+                <p>Formal invitations coming soon. RSVP will be available here shortly.</p>
+                <hr />
                 </div>
             </div>
         </div><!-- /.container -->
     </section>
+    <div class="container">
+        <img class="img-responsive" src="{% static "home/img/footer.jpg" %}" />
+        <div class="row">
+            <div class="col-md-12" style="height:50px"></div>
+        </div>
+    </div>
 
 
 
