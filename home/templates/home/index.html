@@ -205,121 +205,16 @@
     </div>
 
 
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static "home/js/bootstrap.min.js" %}"></script>
+    <!-- Here is the code for the RSVP system -->
+    <script src="{% static "rsvp/js/main.js" %}"></script>
     <script>
-        var anim_len = 500;
-        function submitId() {
-            $("#rsvp-message").fadeOut(anim_len);
-            $("#rsvpInputForm").animate({
-                opacity: 0,
-                left: "200"},
-                anim_len, function() {
-                var input = $("#rsvpIdInput").val();
-                // TODO: Ensure it's a number.
-                $.ajax({
-                    type: "GET",
-                    url: "/rsvp/" + input + "/",
-                    data: $("#rsvpInputForm").serialize(),
-                    success: handleSubmitId,
-                    error: handleSubmitIdFail,
-                    dataType: "json"
-                });
-            });
-            return false;
-        }
-        function handleSubmitIdFail() {
-            $("#rsvp-message").text("Invalid invitation number.");
-            $("#rsvp-message").fadeIn(anim_len);
-            $("#rsvpInputForm").animate({
-                opacity: 1.0,
-                left: "0"}, anim_len);
-        }
-        function handleSubmitId(data) {
-            var table = $("<table></table>").addClass("table");
-            var headerRow = $("<tr></tr>");
-            headerRow.append($("<th></th>").text('Going?'));
-            headerRow.append($("<th></th>").text('First Name'));
-            headerRow.append($("<th></th>").text('Last Name'));
-            table.append(headerRow);
-            for (var i = 0; i < data.people.length; i++) {
-                // Create a row.
-                var row = $("<tr></tr>");
-                row.append($("<td></td>").html(
-                    '<input name="' + data.people[i].id + '" type="checkbox"></input>'));
-                row.append($("<td></td>").text(data.people[i].first));
-                row.append($("<td></td>").text(data.people[i].last));
-                table.append(row);
-            }
-            $("#rsvpInputBlock").html("<label>Guests</label>");
-            $("#rsvpInputBlock").append('<input id="rsvpIdInput" type="hidden" value="' + data.invite + '"></input>');
-            $("#rsvpInputBlock").append(table);
-            $("#rsvpButton").unbind("click");
-            $("#rsvpButton").click(submitResponse);
-            $("#rsvp-message").text("Please check the box next to the name of whoever will be attending.");
-            $("#rsvp-message").fadeIn(anim_len);
-            $("#rsvpInputForm").animate({
-                opacity: 1.0,
-                left: "0"}, anim_len);
-        }
-
-        function submitResponse() {
-            $("#rsvp-message").fadeOut(anim_len);
-            $("#rsvpInputForm").animate({
-                opacity: 0,
-                left: "200"},
-                anim_len, function() {
-                var id = $("#rsvpIdInput").val();
-                $.ajax({
-                    type: "POST",
-                    url: "/rsvp/" + id + "/",
-                    data: $("#rsvpInputForm").serialize(),
-                    success: handleSubmitResponse,
-                    error: handleSubmitResponseFail,
-                    dataType: "json"
-                });
-            });
-            return false;
-        }
-        function handleSubmitResponse(data) {
-            var table = $("<table></table>").addClass("table");
-            var headerRow = $("<tr></tr>");
-            headerRow.append($("<th></th>").text('Going?'));
-            headerRow.append($("<th></th>").text('First Name'));
-            headerRow.append($("<th></th>").text('Last Name'));
-            table.append(headerRow);
-            for (var i = 0; i < data.length; i++) {
-                // Create a row.
-                var row = $("<tr></tr>");
-                row.append($("<td></td>").text(data[i].going));
-                row.append($("<td></td>").text(data[i].first));
-                row.append($("<td></td>").text(data[i].last));
-                table.append(row);
-            }
-            $("#rsvpInputForm").html("<label>Confirmation</label>");
-            $("#rsvpInputForm").append(table);
-            $("#rsvp-message").text("Thank you for your response! We look forward to seeing you!");
-            $("#rsvp-message").fadeIn(anim_len);
-            $("#rsvpInputForm").animate({
-                opacity: 1.0,
-                left: "0"}, anim_len);
-        }
-        function handleSubmitResponseFail() {
-            $("#rsvp-message").text("An error has occured. Please refresh the page and retry or contact Chris or Hannah directly.");
-            $("#rsvp-message").fadeIn(anim_len);
-        }
-        function setupPage() {
-            // Register a handler for when the user submits their
-            // reservation ID.
-            $("#rsvpButton").click(submitId);
-            $("#rsvp-message").text("Please reply by November 6th.");
-        }
 
         // Perform any basic setup required.
-        $(document).ready(setupPage);
+        $(document).ready(rsvpSetup);
 
     </script>
   </body>
