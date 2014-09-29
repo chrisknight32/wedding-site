@@ -106,7 +106,7 @@
                 840 Santa Clara Place<br />
                 San Diego, CA 92109<br />
                 <a target="_blank" href="https://maps.google.com/maps?client=safari&oe=UTF-8&ie=UTF8&q=Mission+Beach+Women%27s+Club&fb=1&gl=us&hq=mission+beach+women%27s+club&cid=16512818404190027350&t=h&z=16&vpsrc=0&iwloc=A">Map</a> - 
-                <a onclick="$('#directions-details').toggle();">Directions</a>
+                <a onclick="$('#directions-details').slideToggle();">Directions</a>
                 </p>
                 <p id="directions-details" class="text-left" style="display:none">
                 We recommend you approach from the southern side of Mission Bay to avoid traffic. From the 5, merge onto the 8 west and take the exit for West Mission Bay Drive. Merge onto West Mission Bay Drive, and then turn right onto Mission Blvd. Turn right onto Santa Clara Place. You will see the Mission Beach Women's Club on the left side of the street, adjacent to Mission Bay. Continue straight to park in one of the lots at the Santa Clara Point Recreation Center.
@@ -137,7 +137,7 @@
                 San Diego, CA 92109<br />
                 <a target="_blank" href="http://www.ihg.com/holidayinnexpress/hotels/us/en/san-diego/sanmb/hoteldetail?qAdlt=1&qBrs=6c.hi.ex.rs.ic.cp.in.sb.cw.cv&qChld=0&qFRA=1&qGRM=0&qGrpCd=AKW&qIta=99801505&qPSt=0&qRRSrt=rt&qRms=1&qRpn=1&qRpp=10&qSHp=1&qSmP=3&qSrt=sBR&qWch=0&srb_u=1&icdv=99801505">Website</a> -
                 <a target="_blank" href="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=4540+Mission+Bay+Dr,+San+Diego,+CA&aq=0&oq=4540+Mission+B&sll=32.824552,-117.108978&sspn=0.896669,1.84433&vpsrc=0&t=h&ie=UTF8&hq=&hnear=4540+Mission+Bay+Dr,+San+Diego,+California+92109&z=17&iwloc=A">Map</a> - 
-                <a onclick="$('#holiday-details').toggle();">Details</a>
+                <a onclick="$('#holiday-details').slideToggle();">Details</a>
                 </p>
                 <p id="holiday-details" style="display:none">We've arranged a group rate at the Holiday Inn Express which is valid if you book before November 15th, 2014. You can call and make a reservation as part of the "Al-Sodani and Knight wedding group" or book online using the group code "AKW."</p>
                 </div>
@@ -149,7 +149,7 @@
                 San Diego, CA 92109<br />
                 <a target="_blank" href="http://www.catamaranresort.com/">Website</a> - 
                     <a target="_blank" href="https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=3999+Mission+Blvd,+San+Diego,+CA&aq=0&oq=3999+miss&sll=32.824552,-117.108978&sspn=0.868973,1.84433&vpsrc=0&t=h&ie=UTF8&hq=&hnear=3999+Mission+Blvd,+San+Diego,+California+92109&z=17&iwloc=A">Map</a> - 
-                <a onclick="$('#catamaran-details').toggle();">Details</a>
+                <a onclick="$('#catamaran-details').slideToggle();">Details</a>
                 </p>
                 <p id="catamaran-details" style="display:none">The Catamaran resort is a more expensive option within walking distance. There is a shuttle to and from the San Diego Airport, so you can avoid driving altogether.</p>
                 </div>
@@ -161,7 +161,7 @@
                 San Diego, CA 92109<br />
                 <a target="_blank" href="http://www.bahiahotel.com/">Website</a> - 
                 <a target="_blank" href="https://maps.google.com/maps?client=safari&q=998+west+mission+bay+drive&ie=UTF8&hq=&hnear=998+W+Mission+Bay+Dr,+San+Diego,+California+92109&t=h&z=16&vpsrc=0&iwloc=A">Map</a> - 
-                <a onclick="$('#bahia-details').toggle();">Details</a>
+                <a onclick="$('#bahia-details').slideToggle();">Details</a>
                 </p>
                 <p id="bahia-details" style="display:none">The Bahia resort is a nicer option about 1 mile away. There is also a shuttle to and from the San Diego Airport, so you can avoid driving altogether.</p>
                 </div>
@@ -173,14 +173,31 @@
             <div class="row">
                 <h2 class="page-header">RSVP</h2>
 
-                <div class="col-md-12">
-                <p>Formal invitations coming soon. RSVP will be available here shortly.</p>
-                <hr />
+                <div class="col-md-4">
+                {% block rsvp %}
+                <div id="rsvpBlock" style="min-height: 250px; overflow: hidden">
+                    <form role="form" id="rsvpInputForm" name="rsvpInputForm" style="position: relative">
+                        {% csrf_token %}
+                        <div id="rsvpInputBlock" class="form-group">
+                            <label for=rsvpIdInput">Invitation Number</label>
+                            <input id="rsvpIdInput" class="form-control" type="text" value=""></input>
+                            <p class="help-block">The number can be found on the back of your invitation.</p>
+                        </div>
+                        <div class="form-group">
+                            <input id="rsvpButton" class="btn btn-default" type="submit" value="Submit"></input>
+                        </div>
+                    </form>
+                </div>
+                {% endblock %}
+                </div>
+                <div class="col-md-8">
+                    <p class="text-center lead" style="margin-top: 50px" id="rsvp-message"></p>
                 </div>
             </div>
         </div><!-- /.container -->
     </section>
     <div class="container">
+        <hr />
         <img class="img-responsive" src="{% static "home/img/footer.jpg" %}" />
         <div class="row">
             <div class="col-md-12" style="height:50px"></div>
@@ -193,5 +210,117 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static "home/js/bootstrap.min.js" %}"></script>
+    <script>
+        var anim_len = 500;
+        function submitId() {
+            $("#rsvp-message").fadeOut(anim_len);
+            $("#rsvpInputForm").animate({
+                opacity: 0,
+                left: "200"},
+                anim_len, function() {
+                var input = $("#rsvpIdInput").val();
+                // TODO: Ensure it's a number.
+                $.ajax({
+                    type: "GET",
+                    url: "/rsvp/" + input + "/",
+                    data: $("#rsvpInputForm").serialize(),
+                    success: handleSubmitId,
+                    error: handleSubmitIdFail,
+                    dataType: "json"
+                });
+            });
+            return false;
+        }
+        function handleSubmitIdFail() {
+            $("#rsvp-message").text("Invalid invitation number.");
+            $("#rsvp-message").fadeIn(anim_len);
+            $("#rsvpInputForm").animate({
+                opacity: 1.0,
+                left: "0"}, anim_len);
+        }
+        function handleSubmitId(data) {
+            var table = $("<table></table>").addClass("table");
+            var headerRow = $("<tr></tr>");
+            headerRow.append($("<th></th>").text('Going?'));
+            headerRow.append($("<th></th>").text('First Name'));
+            headerRow.append($("<th></th>").text('Last Name'));
+            table.append(headerRow);
+            for (var i = 0; i < data.people.length; i++) {
+                // Create a row.
+                var row = $("<tr></tr>");
+                row.append($("<td></td>").html(
+                    '<input name="' + data.people[i].id + '" type="checkbox"></input>'));
+                row.append($("<td></td>").text(data.people[i].first));
+                row.append($("<td></td>").text(data.people[i].last));
+                table.append(row);
+            }
+            $("#rsvpInputBlock").html("<label>Guests</label>");
+            $("#rsvpInputBlock").append('<input id="rsvpIdInput" type="hidden" value="' + data.invite + '"></input>');
+            $("#rsvpInputBlock").append(table);
+            $("#rsvpButton").unbind("click");
+            $("#rsvpButton").click(submitResponse);
+            $("#rsvp-message").text("Please check the box next to the name of whoever will be attending.");
+            $("#rsvp-message").fadeIn(anim_len);
+            $("#rsvpInputForm").animate({
+                opacity: 1.0,
+                left: "0"}, anim_len);
+        }
+
+        function submitResponse() {
+            $("#rsvp-message").fadeOut(anim_len);
+            $("#rsvpInputForm").animate({
+                opacity: 0,
+                left: "200"},
+                anim_len, function() {
+                var id = $("#rsvpIdInput").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/rsvp/" + id + "/",
+                    data: $("#rsvpInputForm").serialize(),
+                    success: handleSubmitResponse,
+                    error: handleSubmitResponseFail,
+                    dataType: "json"
+                });
+            });
+            return false;
+        }
+        function handleSubmitResponse(data) {
+            var table = $("<table></table>").addClass("table");
+            var headerRow = $("<tr></tr>");
+            headerRow.append($("<th></th>").text('Going?'));
+            headerRow.append($("<th></th>").text('First Name'));
+            headerRow.append($("<th></th>").text('Last Name'));
+            table.append(headerRow);
+            for (var i = 0; i < data.length; i++) {
+                // Create a row.
+                var row = $("<tr></tr>");
+                row.append($("<td></td>").text(data[i].going));
+                row.append($("<td></td>").text(data[i].first));
+                row.append($("<td></td>").text(data[i].last));
+                table.append(row);
+            }
+            $("#rsvpInputForm").html("<label>Confirmation</label>");
+            $("#rsvpInputForm").append(table);
+            $("#rsvp-message").text("Thank you for your response! We look forward to seeing you!");
+            $("#rsvp-message").fadeIn(anim_len);
+            $("#rsvpInputForm").animate({
+                opacity: 1.0,
+                left: "0"}, anim_len);
+        }
+        function handleSubmitResponseFail() {
+            $("#rsvp-message").text("An error has occured. Please refresh the page and retry or contact Chris or Hannah directly.");
+            $("#rsvp-message").fadeIn(anim_len);
+        }
+        function setupPage() {
+            // Register a handler for when the user submits their
+            // reservation ID.
+            $("#rsvpButton").click(submitId);
+            $("#rsvp-message").text("Please reply by November 6th.");
+        }
+
+        // Perform any basic setup required.
+        $(document).ready(setupPage);
+
+    </script>
   </body>
 </html>
