@@ -55,10 +55,14 @@ function handleSubmitId(data) {
         row.append($("<td></td>").text(data.people[i].last));
         table.append(row);
     }
+    // Create a comment input.
     // Stuff our new content into the page.
     $("#rsvpInputBlock").html("<label>Guests</label>");
     $("#rsvpInputBlock").append('<input id="rsvpIdInput" type="hidden" value="' + data.invite + '"></input>');
     $("#rsvpInputBlock").append(table);
+    $("#rsvpInputBlock").append($('<label for="comment">Comments</label>'));
+    $("#rsvpInputBlock").append($('<textarea name="comment" id="comment" rows="4"></textarea>').addClass("form-control"));
+
     // Set up the new click handler.
     $("#rsvpButton").unbind("click");
     $("#rsvpButton").click(submitResponse);
@@ -97,6 +101,7 @@ function submitResponse() {
 // Handles the successful server response after submitting the RSVP info.
 function handleSubmitResponse(data) {
     // Build a table with the results.
+    var tableFormGroup = $("<div></div>").addClass("form-group");
     var table = $("<table></table>").addClass("table");
     var headerRow = $("<tr></tr>");
     headerRow.append($("<th></th>").text('Going?'));
@@ -113,7 +118,8 @@ function handleSubmitResponse(data) {
     }
     // Stuff the new stuff into our page.
     $("#rsvpInputForm").html("<label>Confirmation</label>");
-    $("#rsvpInputForm").append(table);
+    tableFormGroup.append(table);
+    $("#rsvpInputForm").append(tableFormGroup);
     // Update the message.
     $("#rsvp-message").text("Thank you for your response! We look forward to seeing you!");
     // Animate it all back in.

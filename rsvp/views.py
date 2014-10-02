@@ -22,6 +22,10 @@ def respond(request, invite_id):
                 "last": person.last_name,
                 "going": "Yes" if going else "No"
                 })
-            resp = Response(person=person, going=going)
-            resp.save()
+            if request.POST.has_key("comment"):
+                resp = Response(person=person, going=going, comment=request.POST["comment"])
+                resp.save()
+            else:
+                resp = Response(person=person, going=going)
+                resp.save()
         return HttpResponse(json.dumps(replys), content_type="application/javascript")

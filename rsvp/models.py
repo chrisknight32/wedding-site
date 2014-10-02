@@ -28,6 +28,7 @@ class Person(models.Model):
 class Response(models.Model):
     person = models.ForeignKey(Person, related_name='responses')
     going = models.BooleanField()
+    comment = models.TextField(blank=True);
     reply_time = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
